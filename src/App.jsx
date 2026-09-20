@@ -1,24 +1,26 @@
+import { useState } from "react";
 import Quiz from "./Quiz";
 import CodeEditor from "./CodeEditor";
+import AdminDashboard from "./AdminDashboard";
 
 function App() {
+  const [view, setView] = useState("test");
+
   return (
     <div>
-      <Quiz />
-      <CodeEditor />
-    </div>
-  );
-}
+      <nav style={{ padding: 8 }}>
+        <button onClick={() => setView("test")}>Assessment</button>{" "}
+        <button onClick={() => setView("admin")}>Admin Dashboard</button>
+      </nav>
 
-export default App;
-import Quiz from "./Quiz";
-import React from 'react';
-import StudentDashboard from './StudentDashboard';
-
-function App() {
-  return (
-    <div>
-      <StudentDashboard />
+      {view === "test" ? (
+        <>
+          <Quiz />
+          <CodeEditor />
+        </>
+      ) : (
+        <AdminDashboard />
+      )}
     </div>
   );
 }
