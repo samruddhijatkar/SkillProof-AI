@@ -16,7 +16,7 @@ export default function StudentDashboard() {
   ];
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/roles')
+    fetch('https://skillproof-ai-or2r.onrender.com/roles')
       .then(res => res.json())
       .then(data => setRoles(data))
       .catch(() => {
