@@ -4,6 +4,11 @@ const questions = [
   { q: "Which hook manages state in React?", options: ["useEffect", "useState", "useRef", "useMemo"], answer: 1 },
   { q: "Which HTTP method creates a resource?", options: ["GET", "PUT", "POST", "DELETE"], answer: 2 },
   { q: "What does CSS stand for?", options: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style System", "Coded Style Sheets"], answer: 0 },
+    { q: "What does '===' check in JavaScript?", options: ["Value only", "Value and type", "Type only", "Nothing"], answer: 1 },
+  { q: "Which keyword declares a constant?", options: ["var", "let", "const", "define"], answer: 2 },
+  { q: "Which tag creates a hyperlink in HTML?", options: ["<link>", "<a>", "<href>", "<url>"], answer: 1 },
+  { q: "Which SQL keyword retrieves data from a table?", options: ["GET", "SELECT", "FETCH", "PULL"], answer: 1 },
+  { q: "Which command uploads local commits to GitHub?", options: ["git pull", "git push", "git commit", "git fetch"], answer: 1 },
 ];
 
 export default function Quiz() {
