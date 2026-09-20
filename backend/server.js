@@ -70,6 +70,29 @@ app.post('/api/analyze', (req, res) => {
     return res.status(400).json({ error: "'evidenceLinks' must be an array if provided" });
   }
 
+  const learningResources = {
+  "HTML": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+  "CSS": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  "JavaScript": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+  "React": "https://react.dev/learn",
+  "Git": "https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes/",
+  "Node.js": "https://nodejs.dev/en/learn/",
+  "Express": "https://expressjs.com/en/starter/installing.html",
+  "Databases": "https://www.freecodecamp.org/news/database-design-course-for-beginners/",
+  "REST APIs": "https://www.freecodecamp.org/news/rest-api-tutorial-rest-client-rest-service-and-api-calls-explained-with-code-examples/",
+  "Python": "https://www.freecodecamp.org/learn/scientific-computing-with-python/",
+  "SQL": "https://www.freecodecamp.org/learn/relational-database/",
+  "Excel": "https://www.freecodecamp.org/news/learn-excel-basics/",
+  "Statistics": "https://www.khanacademy.org/math/statistics-probability",
+  "Data Visualization": "https://www.freecodecamp.org/news/data-visualization-with-python/",
+  "ML Algorithms": "https://www.freecodecamp.org/learn/machine-learning-with-python/",
+  "Data Handling": "https://www.freecodecamp.org/learn/data-analysis-with-python/",
+  "Linux": "https://www.freecodecamp.org/news/the-linux-commands-handbook/",
+  "Docker": "https://docker-curriculum.com/",
+  "CI/CD": "https://www.freecodecamp.org/news/what-is-ci-cd/",
+  "Cloud Basics": "https://www.freecodecamp.org/news/the-cloud-computing-handbook/"
+};
+
   const result = analyzeSkills(role, userSkills);
   if (!result) {
     return res.status(404).json({ error: `Role '${role}' not found. Check GET /api/roles for valid roles.` });
@@ -80,7 +103,12 @@ app.post('/api/analyze', (req, res) => {
     valid: isValidEvidenceUrl(link)
   }));
 
-  res.json({ ...result, evidenceLinks: validatedLinks });
+  const recommendations = result.missingSkills.map(skill => ({
+  skill: skill,
+  resource: learningResources[skill] || "https://www.freecodecamp.org/"
+}));
+
+   res.json({ ...result, evidenceLinks: validatedLinks, recommendations });
 });
 
 app.post('/api/evaluate-quiz', (req, res) => {

@@ -58,7 +58,7 @@ export default function StudentDashboard() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          targetRole: selectedRole,
+          role: selectedRole,
           userSkills: userSkills,
           projects: [
             { type: 'GitHub', url: projectUrl },
@@ -109,9 +109,10 @@ export default function StudentDashboard() {
           onChange={(e) => setSelectedRole(e.target.value)}
           style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #d1d5db' }}
         >
-          {roles.map((r, idx) => (
-            <option key={idx} value={r.roleTitle}>{r.roleTitle}</option>
-          ))}
+          {Object.keys(roles).map((roleName, idx) => (
+  <option key={idx} value={roleName}
+  >{roleName}</option>
+))}
         </select>
       </div>
 
