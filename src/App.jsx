@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import StudentDashboard from './StudentDashboard';
 import Quiz from './Quiz';
 import AdminDashboard from './AdminDashboard';
+import CodeEditor from './CodeEditor';
 
 function App() {
   const [page, setPage] = useState('dashboard');
@@ -51,12 +52,16 @@ function App() {
         <button style={tabStyle(page === 'admin')} onClick={() => setPage('admin')}>
           🛡️ Admin
         </button>
+        <button style={tabStyle(page === 'editor')} onClick={() => setPage('editor')}>
+  Code Editor
+</button>
       </nav>
 
       <div style={{ padding: '24px', maxWidth: '900px', margin: '0 auto' }}>
         {page === 'dashboard' && <StudentDashboard />}
         {page === 'quiz' && <Quiz />}
         {page === 'admin' && <AdminDashboard />}
+        {page === 'editor' && <CodeEditor />}
       </div>
     </div>
   );
