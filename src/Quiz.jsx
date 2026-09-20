@@ -1,15 +1,27 @@
 import { useState, useEffect } from "react";
 
 const questions = [
+<<<<<<< HEAD
   { q: "Which hook manages state in React?", options: ["useEffect", "useState", "useRef", "useMemo"] },
   { q: "Which HTTP method creates a resource?", options: ["GET", "PUT", "POST", "DELETE"] },
   { q: "What does CSS stand for?", options: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style System", "Coded Style Sheets"] },
+=======
+  { q: "Which hook manages state in React?", options: ["useEffect", "useState", "useRef", "useMemo"], answer: 1 },
+  { q: "Which HTTP method creates a resource?", options: ["GET", "PUT", "POST", "DELETE"], answer: 2 },
+  { q: "What does CSS stand for?", options: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style System", "Coded Style Sheets"], answer: 0 },
+    { q: "What does '===' check in JavaScript?", options: ["Value only", "Value and type", "Type only", "Nothing"], answer: 1 },
+  { q: "Which keyword declares a constant?", options: ["var", "let", "const", "define"], answer: 2 },
+  { q: "Which tag creates a hyperlink in HTML?", options: ["<link>", "<a>", "<href>", "<url>"], answer: 1 },
+  { q: "Which SQL keyword retrieves data from a table?", options: ["GET", "SELECT", "FETCH", "PULL"], answer: 1 },
+  { q: "Which command uploads local commits to GitHub?", options: ["git pull", "git push", "git commit", "git fetch"], answer: 1 },
+>>>>>>> 2c0ce5dd6a780a0507ea09da49e7fd0537229b6d
 ];
 
 export default function Quiz() {
   const [answers, setAnswers] = useState({});
   const [warnings, setWarnings] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+<<<<<<< HEAD
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -41,6 +53,10 @@ export default function Quiz() {
       setLoading(false);
     }
   };
+=======
+
+  const submit = () => setSubmitted(true);
+>>>>>>> 2c0ce5dd6a780a0507ea09da49e7fd0537229b6d
 
   useEffect(() => {
     const onHide = () => {
@@ -59,6 +75,7 @@ export default function Quiz() {
   const block = (e) => e.preventDefault();
 
   if (submitted) {
+<<<<<<< HEAD
     if (loading) return <h2>Scoring...</h2>;
     if (!result) return <h2>Something went wrong.</h2>;
     return (
@@ -68,6 +85,10 @@ export default function Quiz() {
         <p>Percentage: {result.percentage}%</p>
       </div>
     );
+=======
+    const score = questions.filter((x, i) => answers[i] === x.answer).length;
+    return <h2>Submitted. Score: {score}/{questions.length}</h2>;
+>>>>>>> 2c0ce5dd6a780a0507ea09da49e7fd0537229b6d
   }
 
   return (
